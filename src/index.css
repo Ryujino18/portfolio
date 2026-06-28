@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-paper text-black font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .nav-link {
+    @apply inline-block transition-transform duration-300 ease-out hover:-translate-y-[1px] text-black/80 hover:text-black;
+  }
+
+  .btn-primary {
+    @apply relative overflow-hidden inline-flex items-center justify-center px-8 py-4 bg-black text-paper rounded-[2rem] font-medium;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .btn-primary:hover {
+    transform: scale(1.03);
+  }
+
+  .btn-primary-bg {
+    @apply absolute inset-0 bg-signal translate-y-[100%] transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-y-0 rounded-[2rem];
+  }
+
+  .btn-primary-text {
+    @apply relative z-10;
+  }
+}
